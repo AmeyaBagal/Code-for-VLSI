@@ -1,0 +1,15 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+
+PWD=$(shell pwd)
+
+export PYTHONPATH:=$(PWD)/mac_verif:$(PYTHONPATH)
+
+VERILOG_SOURCES=$(PWD)/verilog/mkMACint32.v
+
+EXTRA_ARGS = --trace --trace-structs
+
+TOPLEVEL = mkMACint32
+MODULE   := test_mac
+
+include $(shell cocotb-config --makefiles)/Makefile.sim

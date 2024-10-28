@@ -1,0 +1,35 @@
+=== Generated schedule for mkTopMAC ===
+
+Method schedule
+---------------
+Method: start
+Ready signal: ! inp_fifo_rv.port1__read[64]
+Sequenced after (restricted): get_result
+Conflicts: start
+ 
+Method: get_result
+Ready signal: rg_out_valid
+Conflict-free: get_result
+Sequenced before (restricted): start
+ 
+Rule schedule
+-------------
+Rule: rg_out_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: r1_stage1
+Predicate: inp_fifo_rv.port0__read[64] && (! stage1_fifo_rv.port1__read[64])
+Blocking rules: (none)
+ 
+Rule: r1_stage2
+Predicate: stage1_fifo_rv.port0__read[64]
+Blocking rules: (none)
+ 
+Logical execution order: get_result,
+			 r1_stage2,
+			 r1_stage1,
+			 start,
+			 rg_out_valid__dreg_update
+
+========================================

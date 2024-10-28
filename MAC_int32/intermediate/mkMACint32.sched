@@ -1,0 +1,65 @@
+=== Generated schedule for mkMACint32 ===
+
+Method schedule
+---------------
+Method: start
+Ready signal: ! inp_fifo_rv.port1__read[97]
+Sequenced after (restricted): get_result
+Conflicts: start
+ 
+Method: get_result
+Ready signal: rg_out_valid
+Conflict-free: get_result
+Sequenced before (restricted): start
+ 
+Rule schedule
+-------------
+Rule: rg_out_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: r1_pipe_stage1
+Predicate: inp_fifo_rv.port0__read[97] && (! stage1_fifo_rv.port1__read[161])
+Blocking rules: (none)
+ 
+Rule: r1_pipe_stage2
+Predicate: stage1_fifo_rv.port0__read[161] &&
+	   (! adder_ififo_rv.port1__read[64])
+Blocking rules: (none)
+ 
+Rule: r1_pipe_stage3
+Predicate: adder_ififo_rv.port0__read[64] &&
+	   (! stage2_fifo_rv.port1__read[97])
+Blocking rules: (none)
+ 
+Rule: r1_pipe_stage4
+Predicate: stage2_fifo_rv.port0__read[97] &&
+	   (! stage3_fifo_rv.port1__read[97])
+Blocking rules: (none)
+ 
+Rule: r1_pipe_stage5
+Predicate: stage3_fifo_rv.port0__read[97] &&
+	   (! stage4_fifo_rv.port1__read[97])
+Blocking rules: (none)
+ 
+Rule: r1_pipe_stage6
+Predicate: stage4_fifo_rv.port0__read[97] &&
+	   (! adder_ofifo_rv.port1__read[33])
+Blocking rules: (none)
+ 
+Rule: r1_fin
+Predicate: adder_ofifo_rv.port0__read[33]
+Blocking rules: (none)
+ 
+Logical execution order: get_result,
+			 r1_fin,
+			 r1_pipe_stage6,
+			 r1_pipe_stage5,
+			 r1_pipe_stage4,
+			 r1_pipe_stage3,
+			 r1_pipe_stage2,
+			 r1_pipe_stage1,
+			 start,
+			 rg_out_valid__dreg_update
+
+==========================================
