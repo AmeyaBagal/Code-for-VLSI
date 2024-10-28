@@ -92,5 +92,5 @@ Once the `bf16` multiplication result is converted to `fp32`, it is added to the
 
 ### Final Result
 
-After following these steps, the addition process results in a final `fp32` value, representing the accurate MAC operation output. This high precision output, despite the initial `bf16` inputs, allows for precise accumulations required in many applications.
+After following these steps, the addition process results in a final `fp32` value, representing the accurate MAC operation output. This high precision output, despite the initial `bf16` inputs.
 
