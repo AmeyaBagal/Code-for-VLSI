@@ -1,14 +1,35 @@
-# MAC Output Calculation
+# Multiply-Accumulate (MAC) Module
 
-This module performs a Multiply-Accumulate (MAC) operation using the formula:
+## Overview
 
+This module implements a Multiply-Accumulate (MAC) operation based on the following formula:
 
-where:
+\[
+MAC = A * B + C
+\]
 
-- **A**: `bf16` (Brain Floating Point 16) type
-- **B**: `bf16` type
-- **C**: `fp32` (Floating Point 32) type
+The MAC operation is a fundamental component in digital signal processing, machine learning, and numerical computation tasks. This module provides two operational modes with different input types and output formats to handle both integer and floating-point data.
 
+## Supported Input and Output Formats
+
+The module accepts inputs in two distinct forms:
+
+1. **Integer Mode (S1)**
+   - **Inputs:** 
+     - `A`: 8-bit signed integer (`int8`)
+     - `B`: 8-bit signed integer (`int8`)
+     - `C`: 32-bit signed integer (`int32`)
+   - **Output:**
+     - `MAC`: 32-bit signed integer (`int32`)
+
+2. **Floating-Point Mode (S2)**
+   - **Inputs:** 
+     - `A`: 16-bit brain floating-point (`bf16`)
+     - `B`: 16-bit brain floating-point (`bf16`)
+     - `C`: 32-bit single-precision floating-point (`fp32`)
+   - **Output:**
+     - `MAC`: 32-bit single-precision floating-point (`fp32`)
+     
 ## Data Type Specifications
 
 ### bf16 (Brain Floating Point 16)
