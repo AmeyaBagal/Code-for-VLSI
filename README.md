@@ -62,3 +62,35 @@ When performing multiplication between two `bf16` values, **A** and **B**, the p
 
 7. **Conversion to fp32**:
    - After obtaining the `bf16` multiplication result, it is converted to `fp32` by extending the mantissa to 23 bits (with trailing zeros) and retaining the sign and exponent fields, making it ready for further operations in `fp32`.
+
+## Addition of fp32 Types
+
+Once the `bf16` multiplication result is converted to `fp32`, it is added to the operand **C**, which is already in `fp32` format. The `fp32` addition process follows these steps to ensure precision:
+
+### Steps in fp32 Addition
+
+1. **Align Exponents**:
+   - Identify the exponents of both `fp32` operands (the converted result from `bf16` multiplication and **C**).
+   - Shift the mantissa of the operand with the smaller exponent to the right, aligning it with the larger exponent. This ensures the numbers are in the same scale for addition, though some precision may be lost due to the shift.
+
+2. **Add the Mantissas**:
+   - After alignment, the mantissas of both operands are added (or subtracted, if the signs differ).
+   - The sum may temporarily exceed 23 bits due to the added precision.
+
+3. **Normalize the Result**:
+   - If the mantissa sum exceeds the 23-bit limit, it is normalized by shifting right and incrementing the exponent. This step ensures the result fits within the `fp32` format.
+
+4. **Handle Overflow/Underflow**:
+   - If the exponent exceeds the maximum allowable range, overflow occurs, resulting in an `Inf` or `NaN` value.
+   - Conversely, if the exponent falls below the minimum range, underflow occurs, producing a result close to zero.
+
+5. **Round the Result**:
+   - The final mantissa is rounded to the nearest representable value in `fp32`, keeping accuracy within the 23-bit mantissa.
+
+6. **Combine the Components**:
+   - The final result combines the sign, normalized exponent, and rounded mantissa, yielding a 32-bit floating-point output in `fp32` format.
+
+### Final Result
+
+After following these steps, the addition process results in a final `fp32` value, representing the accurate MAC operation output. This high precision output, despite the initial `bf16` inputs, allows for precise accumulations required in many applications.
+
