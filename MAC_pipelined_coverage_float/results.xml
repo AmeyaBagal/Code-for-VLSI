@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1730240087" />
+    <testcase name="test_mac" classname="test_mac" file="/home/shakti/Downloads/MAC_pipelined_coverage_float/mac_verif/test_mac.py" lineno="63" time="0.2630331516265869" sim_time_ns="125000.001" ratio_time="475225.27189825615" />
+  </testsuite>
+</testsuites>
