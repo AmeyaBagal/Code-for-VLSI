@@ -1,0 +1,35 @@
+=== Generated schedule for mkTopMAC ===
+
+Method schedule
+---------------
+Method: start
+Ready signal: True
+Sequenced before (restricted): start
+Sequenced after (restricted): get_result
+ 
+Method: get_result
+Ready signal: rg_out_valid
+Conflict-free: get_result
+Sequenced before (restricted): start
+ 
+Rule schedule
+-------------
+Rule: rg_inp_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rg_out_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: r1_mac
+Predicate: rg_inp_valid
+Blocking rules: (none)
+ 
+Logical execution order: get_result,
+			 r1_mac,
+			 start,
+			 rg_inp_valid__dreg_update,
+			 rg_out_valid__dreg_update
+
+========================================
