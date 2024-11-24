@@ -1,0 +1,15 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+
+PWD=$(shell pwd)
+
+export PYTHONPATH:=$(PWD)/arrmult_verif:$(PYTHONPATH)
+
+VERILOG_SOURCES=$(wildcard verilog/*.v)
+
+EXTRA_ARGS = --trace --trace-structs
+
+TOPLEVEL = mkArrMult
+MODULE   := test_arrmult
+
+include $(shell cocotb-config --makefiles)/Makefile.sim

@@ -1,0 +1,79 @@
+=== Generated schedule for mkCell ===
+
+Method schedule
+---------------
+Method: putA
+Ready signal: True
+Conflict-free: putB, putC, putS, getB, getS, ans_ready
+Sequenced before (restricted): putA
+Sequenced after: getA
+Sequenced after (restricted): getC
+ 
+Method: putB
+Ready signal: True
+Conflict-free: putA, putC, putS, getA, getS, ans_ready
+Sequenced before (restricted): putB
+Sequenced after: getB
+Sequenced after (restricted): getC
+ 
+Method: putC
+Ready signal: True
+Conflict-free: putA, putB, putS, getA, getB, getS, ans_ready
+Sequenced before (restricted): putC
+Sequenced after (restricted): getC
+ 
+Method: putS
+Ready signal: True
+Conflict-free: putA, putB, putC, getA, getB, ans_ready
+Sequenced before (restricted): putS
+Sequenced after: getS
+Sequenced after (restricted): getC
+ 
+Method: getC
+Ready signal: mac.RDY_get_result_ready && mac.get_result_ready
+Conflict-free: getC, getA, getB, getS, ans_ready
+Sequenced before (restricted): putA, putB, putC, putS
+ 
+Method: getA
+Ready signal: mac.RDY_get_result_ready && mac.get_result_ready
+Conflict-free: putB, putC, putS, getC, getA, getB, getS, ans_ready
+Sequenced before: putA
+ 
+Method: getB
+Ready signal: mac.RDY_get_result_ready && mac.get_result_ready
+Conflict-free: putA, putC, putS, getC, getA, getB, getS, ans_ready
+Sequenced before: putB
+ 
+Method: getS
+Ready signal: mac.RDY_get_result_ready && mac.get_result_ready
+Conflict-free: putA, putB, putC, getC, getA, getB, getS, ans_ready
+Sequenced before: putS
+ 
+Method: ans_ready
+Ready signal: mac.RDY_get_result_ready && mac.get_result_ready
+Conflict-free: putA, putB, putC, putS, getC, getA, getB, getS, ans_ready
+ 
+Rule schedule
+-------------
+Rule: passInputsToMAC
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: fetchMACResult
+Predicate: mac.RDY_get_result && mac.RDY_get_result_ready &&
+	   mac.get_result_ready
+Blocking rules: (none)
+ 
+Logical execution order: getC,
+			 getA,
+			 getB,
+			 getS,
+			 ans_ready,
+			 fetchMACResult,
+			 passInputsToMAC,
+			 putA,
+			 putB,
+			 putC,
+			 putS
+
+======================================

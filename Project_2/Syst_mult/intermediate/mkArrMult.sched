@@ -1,0 +1,63 @@
+=== Generated schedule for mkArrMult ===
+
+Method schedule
+---------------
+Method: startP
+Ready signal: True
+Sequenced after: outp_start
+Sequenced after (restricted): get_ans
+Conflicts: startP
+ 
+Method: get_ans
+Ready signal: unit_3_0.RDY_getC &&
+	      unit_3_1.RDY_getC && unit_3_2.RDY_getC && unit_3_3.RDY_getC
+Conflict-free: get_ans, outp_start
+Sequenced before (restricted): startP
+ 
+Method: outp_start
+Ready signal: ! (b_filled <= 4'd7)
+Conflict-free: get_ans, outp_start
+Sequenced before: startP
+ 
+Rule schedule
+-------------
+Rule: what_to_do__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: outval
+Predicate: unit_0_0.RDY_getC &&
+	   unit_0_1.RDY_getC &&
+	   unit_0_2.RDY_getC &&
+	   unit_0_3.RDY_getC &&
+	   unit_1_0.RDY_getC &&
+	   unit_1_1.RDY_getC &&
+	   unit_1_2.RDY_getC &&
+	   unit_1_3.RDY_getC &&
+	   unit_2_0.RDY_getC &&
+	   unit_2_1.RDY_getC &&
+	   unit_2_2.RDY_getC &&
+	   unit_2_3.RDY_getC &&
+	   unit_3_0.RDY_getC &&
+	   unit_3_1.RDY_getC &&
+	   unit_3_2.RDY_getC &&
+	   unit_3_3.RDY_getC &&
+	   unit_0_0.RDY_getA &&
+	   unit_0_1.RDY_getA &&
+	   unit_0_2_RDY_getA____d22(...) &&
+	   unit_0_3_RDY_getA__3_AND_unit_1_0_RDY_getA__4__ETC___d79(...) &&
+	   (! what_to_do)
+Blocking rules: (none)
+ 
+Rule: inval
+Predicate: what_to_do
+Blocking rules: (none)
+ 
+Logical execution order: get_ans,
+			 outp_start,
+			 outval,
+			 inval,
+			 startP,
+			 what_to_do__dreg_update
+
+=========================================
