@@ -1,6 +1,6 @@
 /**********************************************
  * Authors: Ameya Bagal, Balabhadra Saketh
- * Descr  : Cell module using the MAC unit
+ * Descr  : Systolic Array  using the cell unit
 ***********************************************/
 
 package arrmult;
