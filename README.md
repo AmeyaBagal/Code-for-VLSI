@@ -25,7 +25,7 @@ The MAC operation is a fundamental component in digital signal processing, machi
    -Coverage for unpipelined MAC unit for bf16 inputs
 7. **MAC_unpipelined_coverage_int**
    -Coverage for unpipelined MAC unit for int8 inputs
-8. **SystArr**
+8. **Project2**
    -Systolic Array Multiplier for project 2
 
 ## Supported Input and Output Formats
