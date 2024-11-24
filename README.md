@@ -10,6 +10,24 @@ MAC = A * B + C
 
 The MAC operation is a fundamental component in digital signal processing, machine learning, and numerical computation tasks. This module provides two operational modes with different input types and output formats to handle both integer and floating-point data.
 
+## File Structure
+1. **MAC_int32**
+   This file is an implemenetation we did for the MAC unit for int32 operation with a six stage pipeline. We have not used it in our final code.
+2. **MAC_pipelined**
+   Pipelined MAC unit
+3. **MAC_pipelined_coverage_float**
+   Coverage for pipelined MAC unit for bf16 inputs
+4. **MAC_pipelined_coverage_int**
+   Coverage for pipelined MAC unit for int8 inputs
+5. **MAC_unpipelined**
+   Unipelined MAC unit
+6. **MAC_unpipelined_coverage_float**
+   Coverage for unpipelined MAC unit for bf16 inputs
+7. **MAC_unpipelined_coverage_int**
+   Coverage for unpipelined MAC unit for int8 inputs
+8. **SystArr**
+   Systolic Array Multiplier for project 2
+
 ## Supported Input and Output Formats
 
 The module accepts inputs in two distinct forms:
