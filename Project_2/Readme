@@ -3,14 +3,22 @@ The mac.bsv file used here is the same as the unpipelined submission of the Proj
 We made two more modules, one for an individual systolic cell (syst_cell.bsv) which takes in 16-bit inputs A and B, 1-bit input S to decide which kind of operation
 bf16 multiplication or int32 addtion the cell has to carry out.
 
-The stystolic cell takes in 3 inputs namely
-A = 8 bit int8 or bf16
-B = 8 bit int8 or bf16
-C = 32 bit int32
+The stystolic cell takes in 4 inputs namely
+A = 8 bit signed-int8 or bf16
+B = 8 bit signed-int8 or bf16
+C = 32 bit signed-int32 or fp32
+s = control signal to decide whether the cell should carry int32 MAC operation or fp32 MAC operation.
+
+The stystolic cell gives 4 outputs namely
+A = Propagated to the next cell in the row of systolic array
+B = Propagated to the next cell in the column of systolic array
+MAC = The MAC output after computation using mac.bsv is given as C input to the next systolic cell in the column.
+s = All the cells in the array must carry the same kind of MAC operation, hence it is given to the next systolic cell in the column.
 
 For the first row of systolic cells in the systolic array, the C input inputs of the MAC unit are initialized to Bit#(32) 'b0.
-The MAC output of the first row of cells is given as the C input of the respective vertically below systolic cell.
-Every row of A input of the systolic cell is transferred horizontally in a row for every clock cycle to carry out computation. So the 
+
+The second module is for the array multiplication operation (ArrMult.bsv) which 
+
 
 
 
