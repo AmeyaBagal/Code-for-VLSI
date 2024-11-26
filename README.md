@@ -1,7 +1,7 @@
 # Assignment 1:
 
-1. int32 :
-a. pipelined design: code - completed,
+-1. int32 :
+-a. pipelined design: code - completed,
    verification - completed
 b. unpipeined design : code - completed,
    verification - completed
